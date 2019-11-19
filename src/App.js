@@ -18,13 +18,12 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <PrivateRoute path="/">
+          <Route exact path="/register" component={Register} />
+          <PrivateRoute exact path="/">
             <Dashboard />
           </PrivateRoute>
         </Switch>
       </Router>
-      <ResultCard />
     </div>
     
   );
