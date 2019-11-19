@@ -5,7 +5,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
-
+import PostForm from './components/PostForm'
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         </Switch>
       </Router>
     </div>
+    
   );
 }
 
