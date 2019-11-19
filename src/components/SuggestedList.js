@@ -9,7 +9,7 @@ function SuggestedList(){
             axios
             .get("https://davidanagy-posthere-flask.herokuapp.com/subreddit")
             .then(response =>{
-                setData(response.data.results);
+                setData(response.data);
                 console.log(response)
             })
         },[])
@@ -19,7 +19,7 @@ function SuggestedList(){
             
                 {data.map((data)=>{
                     return(
-                        <div> 
+                        <div key={data.url}> 
                         <SuggestedCard  
                             name = {data.name}
                             url= {data.url}
