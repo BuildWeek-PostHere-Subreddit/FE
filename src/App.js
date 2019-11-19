@@ -18,7 +18,9 @@ function App() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/" component={Dashboard} />
+          <PrivateRoute path="/">
+            <Dashboard />
+          </PrivateRoute>
         </Switch>
       </Router>
       <SuggestedList />
