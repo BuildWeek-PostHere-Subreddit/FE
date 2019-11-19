@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import PostForm from './components/PostForm'
 import Header from './components/Header'
+import SuggestedList from './components/SuggestedList'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" component={Dashboard} />
         </Switch>
       </Router>
+      <SuggestedList />
     </div>
     
   );
