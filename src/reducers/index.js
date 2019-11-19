@@ -3,7 +3,10 @@ import { SET_USER_ID } from '../actions';
 const initialState = {
     userID: 0,
     error: null,
-    isGetting: false
+    isGetting: false,
+    savedList: [],
+    postSubmission: {},
+    postResult: {}
 };
 
 function reducer(state = initialState, action) {
