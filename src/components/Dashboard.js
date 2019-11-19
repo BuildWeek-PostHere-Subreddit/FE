@@ -8,9 +8,6 @@ const Dashboard = () => {
     return(
         <div className="dashboard">
             <PostForm />
-            <ResultCard />
-            <SearchForm />
-            <SavedList />
         </div>
     )
 }
