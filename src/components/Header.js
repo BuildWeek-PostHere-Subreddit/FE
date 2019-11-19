@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -51,20 +50,35 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Header() {
+
+
+
+
+export default function Header(props) {
   const classes = useStyles();
+
+  const [results, setResults] = useState();
+  const submitHandler = e => {
+    e.preventDefault();
+    }
+
+    const handleChanges = e => {
+        setResults(e.target.value);
+      };
+
+//waiting on what to search to update
 
   return (
     <div className={classes.root}>
       <AppBar style={{ background: '#2E3B55' }} position="static">
         <Toolbar>
+
           <Typography className={classes.title} variant="h6" noWrap>
             Suggest.It
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              
-            </div>
+
+          <form className={classes.search} 
+          onSubmit={submitHandler}>
             <InputBase
               placeholder="Search…"
               classes={{
@@ -72,8 +86,9 @@ export default function Header() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleChanges}
             />
-          </div>
+          </form>
         </Toolbar>
       </AppBar>
     </div>
