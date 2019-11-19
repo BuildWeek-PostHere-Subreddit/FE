@@ -19,7 +19,7 @@ function App() {
             <Dashboard />
           </PrivateRoute>
         </Switch>
-      </Rou
+      </Router>
     </div>
     
   );
