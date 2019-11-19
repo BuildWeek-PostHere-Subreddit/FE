@@ -24,6 +24,7 @@ function App() {
           </PrivateRoute>
         </Switch>
       </Router>
+      <ResultCard />
     </div>
     
   );

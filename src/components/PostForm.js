@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const PostForm = ({ status }) => {
+const PostForm = ({ status, values }) => {
 
     const [post, setPost] = useState([]);
     const classes = useStyles();
@@ -56,17 +56,17 @@ const PostForm = ({ status }) => {
                 <Form>
                     <Field className={classes.title} type="title" name="title" placeholder="Title" />
                     <br /><br />
-                    <Field className={classes.text} as="textarea" type="text" name="text-area" placeholder="Enter Your Post Here!" />
+                    <Field className={classes.text} as="textarea" type="text" name="text" placeholder="Enter Your Post Here!" />
                     <br /><br />
                     <Button className={classes.button} size="large" type="submit">Get Subreddits!</Button>
                 </Form>
             </Card>
             {post.map(post => (
-                <ul key={post.title} index={post.text}>
-                    Title {post.title}
+                <ul key={post.text}>
                     Text goes here {post.text}
+                    Title {post.title}
+                    
                 </ul>
-            ))}
             ))}
         </div>
 
