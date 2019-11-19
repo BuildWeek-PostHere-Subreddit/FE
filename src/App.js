@@ -13,8 +13,8 @@ import NavBar from './components/NavBar';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <NavBar />
         <Header />
         <Route path="/login" component={Login} />
@@ -22,8 +22,8 @@ function App() {
         <PrivateRoute exact path="/">
           <Dashboard />
         </PrivateRoute>
-      </Router>
     </div>
+      </Router>
 
   );
 }
