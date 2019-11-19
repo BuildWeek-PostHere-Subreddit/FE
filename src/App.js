@@ -9,23 +9,22 @@ import PostForm from './components/PostForm'
 import Header from './components/Header'
 import SuggestedList from './components/SuggestedList'
 import ResultCard from './components/ResultCard'
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
-      <Header />
       <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <PrivateRoute exact path="/">
-            <Dashboard />
-          </PrivateRoute>
-        </Switch>
+        <NavBar />
+        <Header />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <PrivateRoute exact path="/">
+          <Dashboard />
+        </PrivateRoute>
       </Router>
     </div>
-    
+
   );
 }
 
