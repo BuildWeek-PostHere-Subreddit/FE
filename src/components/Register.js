@@ -71,13 +71,14 @@ const FormikRegister = withFormik({
         };
     },
 
-    handleSubmit(values, {setStatus}){
+    handleSubmit(values, {setStatus, props}){
         console.log(values);
         axios
             .post("https://backend-posthere-russ-and-mack.herokuapp.com/users/register", values)
             .then(response =>{
                 console.log(response);
                 setStatus(response.data);
+                props.history.push('/login');
             })
             .catch(error => console.log(error.response));
     }

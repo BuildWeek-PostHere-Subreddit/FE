@@ -73,14 +73,14 @@ const FormikLogin = withFormik({
         };
     },
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, props }) {
         axios
             .post("https://backend-posthere-russ-and-mack.herokuapp.com/users/login", values)
             .then(response => {
                 console.log("Axios Login Response:", response);
                 setStatus(response.data);
-                sessionStorage.setItem("token", response.data.tayload);
-                // props.history.push('/')
+                sessionStorage.setItem("token", response.data.token);
+                props.history.push('/');
             })
             .catch(error => console.log(error.response));
     }
