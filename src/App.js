@@ -6,11 +6,13 @@ import Register from './components/Register'
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import PostForm from './components/PostForm'
+import Header from './components/Header'
 
 function App() {
   return (
     <div className="App">
       <h1>Hello World!</h1>
+      <Header />
       <Router>
         <Switch>
           <Route path="/login" component={Login} />
