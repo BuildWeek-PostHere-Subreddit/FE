@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PostForm from './components/PostForm'
 import Header from './components/Header'
 import SuggestedList from './components/SuggestedList'
+import ResultCard from './components/ResultCard'
 
 function App() {
   return (
@@ -23,7 +24,6 @@ function App() {
           </PrivateRoute>
         </Switch>
       </Router>
-      <SuggestedList />
     </div>
     
   );
