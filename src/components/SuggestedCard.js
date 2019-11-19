@@ -10,6 +10,8 @@ function SuggestedCard (props){
                 {props.name} 
                     <CardContent> 
                         {props.url}
+                        </CardContent>
+                        <CardContent>
                          {props.description}
                     </CardContent>               
             </Card>

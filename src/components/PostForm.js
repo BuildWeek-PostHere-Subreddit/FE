@@ -38,10 +38,15 @@ const useStyles = makeStyles(theme => ({
 
 const PostForm = ({ status }) => {
 
-
+    const [post, setPost] = useState([]);
     const classes = useStyles();
 
 
+    useEffect(() =>{
+        if (status) {
+            setPost([...post, status])
+        }
+    }, [status]);
 
     return (
         <div className="postForm">
@@ -56,6 +61,13 @@ const PostForm = ({ status }) => {
                     <Button className={classes.button} size="large" type="submit">Get Subreddits!</Button>
                 </Form>
             </Card>
+            {post.map(post => (
+                <ul key={post.title} index={post.text}>
+                    Title {post.title}
+                    Text goes here {post.text}
+                </ul>
+            ))}
+            ))}
         </div>
 
     )
@@ -69,6 +81,15 @@ const FormikPostForm = withFormik({
         };
     },
 
+    handleSubmit(values, {setStatus}){
+        axios
+            .post("https://reqres.in/api/users/", values)
+            .then(response =>{
+                console.log(response);
+                setStatus(response.data);
+            })
+            .catch(error => console.log(error.response));
+    }
 }
 )(PostForm)
 
