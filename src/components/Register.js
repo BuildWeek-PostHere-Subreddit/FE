@@ -42,9 +42,7 @@ const Register = ({status}) => {
         <div className="registerForm">
             <h1 className={classes.h1}>Welcome New User, Register Here</h1>
             <Card className={classes.card}>
-                
-                    <h2>Welcome Back, Returning User</h2>
-                    
+                               
                         <Form>
                             <Typography className={classes.text} >
                                 Username:
