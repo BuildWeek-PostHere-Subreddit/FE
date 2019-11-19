@@ -23,7 +23,6 @@ function App() {
           </PrivateRoute>
         </Switch>
       </Router>
-      <SuggestedList />
     </div>
     
   );
