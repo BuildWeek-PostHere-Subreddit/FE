@@ -11,21 +11,21 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
     text: {
-      fontSize: 20,
-      marginRight: 86,
+        fontSize: 20,
+        marginRight: 86,
     },
     button: {
         fontSize: 25,
 
-      },
+    },
     card: {
         maxWidth: 500,
         background: 'linear-gradient(40deg, #FFCA00300%, #FF4500 90%)',
     },
     h1: {
-        fontFamily:'Ralewayy', 
+        fontFamily: 'Ralewayy',
     }
-  }));
+}));
 
 
 const Login = ({ status }) => {
@@ -38,34 +38,35 @@ const Login = ({ status }) => {
         }
     }, [status]);
 
-    
+
     return (
-        <div className="loginForm">
-            <Card className={classes.card}>
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/250px-Reddit_logo_new.svg.png"></img>
+        <div className="registerForm">
             <h1 className={classes.h1}>Welcome New User, Register Here</h1>
-                    
-                        <Form>
-                            <Typography className={classes.text} >
-                                Username:
+            <Card className={classes.card}>
+
+                <h2>Welcome Back, Returning User</h2>
+
+                <Form>
+                    <Typography className={classes.text} >
+                        Username:
                              </Typography >
-                            <Field type="username" name="username" placeholder="username" />
-                            </Form>
-                            <Form>
-                            <Typography className={classes.text} >
-                                Password:
+                    <Field type="username" name="username" placeholder="username" />
+                </Form>
+                <Form>
+                    <Typography className={classes.text} >
+                        Password:
                                 </Typography>
-                            <Field type="password" name="password" placeholder="password" />
-                            <br /><br />
-                            <Button className={classes.button} size="large" type="submit">Login</Button>
-                        </Form>
+                    <Field type="password" name="password" placeholder="password" />
+                    <br /><br />
+                    <Button className={classes.button} size="large" type="submit">Register</Button>
+                </Form>
             </Card>
         </div>
 
     )
 }
 const FormikLogin = withFormik({
-    mapPropsToValues({ username, password }) {
+    mapPropsToValues({username, password}){
         return {
             username: username || "",
             password: password || "",
@@ -79,7 +80,7 @@ const FormikLogin = withFormik({
             .then(response => {
                 console.log("Axios Login Response:", response);
                 setStatus(response.data);
-                sessionStorage.setItem("token", response.data.token.payload);
+                sessionStorage.setItem("token", response.data.tayload);
                 // props.history.push('/')
             })
             .catch(error => console.log(error.response));
