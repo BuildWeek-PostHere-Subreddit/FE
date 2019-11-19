@@ -11,17 +11,17 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
     text: {
-      fontSize: 20,
-      marginRight: 86,
+      fontSize: 15,
+      marginRight: 105,
     },
     button: {
         fontSize: 30,
       },
     card: {
         maxWidth: 500,
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
     },
-    h1:{
+    h2:{
         fontFamily: 'Raleway',
     }
   }));
@@ -40,9 +40,10 @@ const Register = ({status}) => {
    
     return(
         <div className="registerForm">
-            <h1 className={classes.h1}>Welcome New User, Register Here</h1>
+            
             <Card className={classes.card}>
-                               
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/250px-Reddit_logo_new.svg.png"></img>
+                    <h2 className={classes.h2}>Welcome New User, Register Here</h2>           
                         <Form>
                             <Typography className={classes.text} >
                                 Username:
