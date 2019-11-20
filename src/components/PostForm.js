@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-
+import PostContent from './PostContent'
 
 const useStyles = makeStyles(theme => ({
     text: {
@@ -62,11 +62,10 @@ const PostForm = ({ status, values }) => {
                 </Form>
             </Card>
             {post.map(post => (
-                <ul key={post.text}>
-                    Text goes here {post.text}
-                    Title {post.title}
-                    
-                </ul>
+                <PostContent 
+                title = {post.title}
+                text= {post.text}
+            />
             ))}
         </div>
 

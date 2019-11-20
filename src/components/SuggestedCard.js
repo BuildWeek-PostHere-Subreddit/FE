@@ -13,6 +13,9 @@ function SuggestedCard (props){
                         </CardContent>
                         <CardContent>
                          {props.description}
+                    </CardContent> 
+                    <CardContent>
+                         {props.subscriptions}
                     </CardContent>               
             </Card>
         
