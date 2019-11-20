@@ -8,9 +8,9 @@ import SuggestedList from "./SuggestedList"
 export default function ResultCard(){
 
     return(
-        <div>
+        <Card>
             <PostContent />
             <SuggestedList />
-        </div>
+        </Card>
     )
 }
