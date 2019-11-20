@@ -24,6 +24,7 @@ function SuggestedList(){
                             name = {data.name}
                             url= {data.url}
                             description= {data.description}
+                            subscribers= {data.subscribers}
                         />
                         </div>
                     )}
