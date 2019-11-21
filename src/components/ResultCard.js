@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
     results:{
         background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
-        
+        borderColor: '#FFFFFF'
     }
 
 }));
@@ -53,8 +53,8 @@ export function ResultCard(props) {
             {props.results.map(result => {
                 return (
                     
-                        <Card className={classes.results}>
-                            <h1><a href={result.url} target="_blank">{result.name}</a></h1>
+                        <Card border={5} className={classes.results}>
+                            <h1 ><a href={result.url} target="_blank">{result.name}</a></h1>
                             <h3>{result.url}</h3>
                             <h3>Subscribers: {result.subscribers}</h3>
                             <h3>{result.description}</h3>

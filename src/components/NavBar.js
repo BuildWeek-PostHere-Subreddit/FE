@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 
 function NavBar(props) {
     if (!localStorage.getItem("token")) {
         return (
-            <Card className="nav">
+            <div className="nav">
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
-            </Card>
+            </div>
         );
     }
     else {
