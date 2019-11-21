@@ -41,7 +41,7 @@ export function ResultCard(props) {
         event.preventDefault();
         //user_id is hard coded right now. Need to fix a redux store issue where the user id is not being updated with the one given upon login
         const resultInfo = {
-            user_id: props.idUser,
+            user_id: localStorage.getItem("user_id"),
             title: props.post.title,
             content: props.post.text,
             link: props.post.link,
