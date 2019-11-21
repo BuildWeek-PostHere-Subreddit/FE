@@ -34,10 +34,10 @@ const useStyles = makeStyles(theme => ({
     h1: {
         fontFamily: 'Ralewayy',
     },
-    form:{
+    form: {
         height: 40,
         width: 200
-        
+
     }
 
 }));
@@ -64,15 +64,15 @@ const Login = ({ status }) => {
                     <Typography className={classes.text} >
                         Username:
                              </Typography >
-                    <Field className ={classes.form} type="username" name="username" placeholder="Username" />
+                    <Field className={classes.form} type="username" name="username" placeholder="Username" />
                 </Form>
                 <Form >
                     <Typography className={classes.passwordtext} >
                         Password:
                                 </Typography>
-                    <Field className ={classes.form} type="password" name="password" placeholder="Password" />
+                    <Field className={classes.form} type="password" name="password" placeholder="Password" />
                     <br /><br />
-                    <Button  className={classes.button} size="large" type="submit">Login</Button>
+                    <Button className={classes.button} size="large" type="submit">Login</Button>
                 </Form>
             </Card>
         </div>
@@ -89,8 +89,9 @@ const FormikLogin = withFormik({
     },
 
     handleSubmit(values, { setStatus, props }) {
-        props.setUserID(values);
-        props.history.push("/")
+        props.setUserID(values).then(() => {
+            props.history.push("/")
+        })
     }
 })(Login)
 

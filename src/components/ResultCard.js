@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     h1: {
         fontFamily: 'Ralewayy',
     },
-    results:{
+    results: {
         background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
         borderColor: '#FFFFFF'
     }
@@ -33,13 +33,31 @@ const useStyles = makeStyles(theme => ({
 
 
 export function ResultCard(props) {
+    console.log("result card props", props)
     const classes = useStyles();
     props.results.length = 3;
 
     const backendSubmit = event => {
         event.preventDefault();
-        //user_id is hard coded to 6 right now. Need to fix a redux store issue where the user id is not being updated with the one given upon login
-        const resultInfo = { user_id: 1, title: props.post.title, content: props.post.text, link: props.post.link, first: props.results[0].name, first_subscribers: props.results[0].subscribers, first_description: props.results[0].description, first_url: props.results[0].url, second: props.results[1].name, second_subscribers: props.results[1].subscribers, second_description: props.results[1].description, second_url: props.results[1].url, third: props.results[2].name, third_subscribers: props.results[2].subscribers, third_description: props.results[2].description, third_url: props.results[2].url }
+        //user_id is hard coded right now. Need to fix a redux store issue where the user id is not being updated with the one given upon login
+        const resultInfo = {
+            user_id: props.idUser,
+            title: props.post.title,
+            content: props.post.text,
+            link: props.post.link,
+            first: props.results[0].name,
+            first_subscribers: props.results[0].subscribers,
+            first_description: props.results[0].description,
+            first_url: props.results[0].url,
+            second: props.results[1].name,
+            second_subscribers: props.results[1].subscribers,
+            second_description: props.results[1].description,
+            second_url: props.results[1].url,
+            third: props.results[2].name,
+            third_subscribers: props.results[2].subscribers,
+            third_description: props.results[2].description,
+            third_url: props.results[2].url
+        }
         console.log("backend submit", resultInfo)
         props.saveResults(resultInfo)
     }
@@ -52,22 +70,22 @@ export function ResultCard(props) {
             <br /><br />
             {props.results.map(result => {
                 return (
-                    
-                        <Card border={5} className={classes.results}>
-                            <h1 ><a href={result.url} target="_blank">{result.name}</a></h1>
-                            <h3>{result.url}</h3>
-                            <h3>Subscribers: {result.subscribers}</h3>
-                            <h3>{result.description}</h3>
-                        </Card>
+
+                    <Card border={5} className={classes.results}>
+                        <h1 ><a href={result.url} target="_blank">{result.name}</a></h1>
+                        <h3>{result.url}</h3>
+                        <h3>Subscribers: {result.subscribers}</h3>
+                        <h3>{result.description}</h3>
+                    </Card>
                 )
             })}
-            
+
         </Card>
     )
 }
 
 const mapStateToProps = state => {
-
+    console.log(state.loginReducer)
     return {
         results: state.postReducer.results,
         idUser: state.loginReducer.idUser
