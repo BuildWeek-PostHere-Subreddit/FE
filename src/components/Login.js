@@ -13,20 +13,33 @@ import { setUserID } from '../actions/loginActions';
 
 const useStyles = makeStyles(theme => ({
     text: {
-        fontSize: 15,
-        marginRight: 105,
+        fontSize: 20,
+        marginRight: 100,
+    },
+    passwordtext: {
+        fontSize: 20,
+        marginRight: 100,
     },
     button: {
         fontSize: 25,
-
+        background: 'linear-gradient(45deg, #2E3B55 30%, #2E3B55 90%)',
+        color: '#FFFFFF'
     },
     card: {
         maxWidth: 500,
         background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
+        borderRadius: 0,
+        height: 500
     },
     h1: {
         fontFamily: 'Ralewayy',
+    },
+    form:{
+        height: 40,
+        width: 200
+        
     }
+
 }));
 
 
@@ -47,19 +60,19 @@ const Login = ({ status }) => {
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/250px-Reddit_logo_new.svg.png"></img>
                 <h2>Welcome Back, Returning User</h2>
 
-                <Form>
+                <Form >
                     <Typography className={classes.text} >
                         Username:
                              </Typography >
-                    <Field type="username" name="username" placeholder="username" />
+                    <Field className ={classes.form} type="username" name="username" placeholder="Username" />
                 </Form>
-                <Form>
-                    <Typography className={classes.text} >
+                <Form >
+                    <Typography className={classes.passwordtext} >
                         Password:
                                 </Typography>
-                    <Field type="password" name="password" placeholder="password" />
+                    <Field className ={classes.form} type="password" name="password" placeholder="Password" />
                     <br /><br />
-                    <Button className={classes.button} size="large" type="submit">Login</Button>
+                    <Button  className={classes.button} size="large" type="submit">Login</Button>
                 </Form>
             </Card>
         </div>
