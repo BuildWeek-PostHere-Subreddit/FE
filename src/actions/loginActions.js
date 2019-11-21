@@ -11,19 +11,19 @@ export const ID_FAILURE = 'ID_FAILURE';
 
 
 
-export const setUserID= (credentials, props) => dispatch => {
-    console.log(`log Action`,credentials)
-    // console.log("props", props)
-    // action objects
-    // from thunk (see below) do some async action and dispatch an error or success action
-    axios
-        .post('https://backend-posthere-russ-and-mack.herokuapp.com/users/login', credentials)
-        .then(res => {
-           console.log(res.data.id)
-          dispatch({ type: ID_SUCCESS, payload: res.data.id})
-          localStorage.setItem('token', res.data.token);
-          // redirect to the apps main page?
-          props.history.push('/');
-        })
-        .catch(err =>  dispatch({ type: ID_FAILURE, payload: err }));
-  };
+export const setUserID = (credentials, props) => dispatch => {
+  console.log(`log Action`, credentials)
+  console.log("props", props)
+  // action objects
+  // from thunk (see below) do some async action and dispatch an error or success action
+  axios
+    .post('https://backend-posthere-russ-and-mack.herokuapp.com/users/login', credentials)
+    .then(res => {
+      console.log(res.data.id)
+      dispatch({ type: ID_SUCCESS, payload: res.data.id })
+      localStorage.setItem('token', res.data.token);
+      // redirect to the apps main page?
+    })
+    .then(() => props.history.push('/'))
+    .catch(err => dispatch({ type: ID_FAILURE, payload: err }));
+};

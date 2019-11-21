@@ -44,7 +44,7 @@ const Login = ({ status }) => {
     return (
         <div className="registerForm">
             <Card className={classes.card}>
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/250px-Reddit_logo_new.svg.png"></img>
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/250px-Reddit_logo_new.svg.png"></img>
                 <h2>Welcome Back, Returning User</h2>
 
                 <Form>
@@ -67,7 +67,7 @@ const Login = ({ status }) => {
     )
 }
 const FormikLogin = withFormik({
-    mapPropsToValues({username, password}){
+    mapPropsToValues({ username, password }) {
         return {
             username: username || "",
             password: password || "",
@@ -77,18 +77,7 @@ const FormikLogin = withFormik({
 
     handleSubmit(values, { setStatus, props }) {
         props.setUserID(values);
-        props.history.push('/')
-        
-        // axios
-        //     .post("https://backend-posthere-russ-and-mack.herokuapp.com/users/login", values)
-        //     .then(response => {
-        //         console.log("Axios Login Response:", response);
-        //         setStatus(response.data);
-        //         sessionStorage.setItem("token", response.data.token);
-        //         props.setUserID(user)
-        //         props.history.push('/');
-        //     })
-        //     .catch(error => console.log(error.response));
+        props.history.push("/")
     }
 })(Login)
 
@@ -97,5 +86,5 @@ const FormikLogin = withFormik({
 
 export default connect(
     null,
-    {setUserID}
+    { setUserID }
 )(FormikLogin)
