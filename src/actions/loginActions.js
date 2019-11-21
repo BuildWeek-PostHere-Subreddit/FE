@@ -16,7 +16,7 @@ export const setUserID = (credentials, props) => dispatch => {
   console.log("props", props)
   // action objects
   // from thunk (see below) do some async action and dispatch an error or success action
-  axios
+  return axios
     .post('https://backend-posthere-russ-and-mack.herokuapp.com/users/login', credentials)
     .then(res => {
       console.log(res.data.id)
@@ -25,6 +25,5 @@ export const setUserID = (credentials, props) => dispatch => {
       localStorage.setItem('user_id', res.data.id)
       // redirect to the apps main page?
     })
-    .then(() => props.history.push('/'))
     .catch(err => dispatch({ type: ID_FAILURE, payload: err }));
 };
