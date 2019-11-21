@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import { connect } from "react-redux";
 import axios from "axios";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,6 +8,7 @@ import Typography from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { setUserID } from '../actions/loginActions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -74,19 +76,26 @@ const FormikLogin = withFormik({
     },
 
     handleSubmit(values, { setStatus, props }) {
-        axios
-            .post("https://backend-posthere-russ-and-mack.herokuapp.com/users/login", values)
-            .then(response => {
-                console.log("Axios Login Response:", response);
-                setStatus(response.data);
-                sessionStorage.setItem("token", response.data.token);
-                props.history.push('/');
-            })
-            .catch(error => console.log(error.response));
+        props.setUserID(values);
+        props.history.push('/')
+        
+        // axios
+        //     .post("https://backend-posthere-russ-and-mack.herokuapp.com/users/login", values)
+        //     .then(response => {
+        //         console.log("Axios Login Response:", response);
+        //         setStatus(response.data);
+        //         sessionStorage.setItem("token", response.data.token);
+        //         props.setUserID(user)
+        //         props.history.push('/');
+        //     })
+        //     .catch(error => console.log(error.response));
     }
 })(Login)
 
 
+// export default FormikLogin;
 
-
-export default FormikLogin;
+export default connect(
+    null,
+    {setUserID}
+)(FormikLogin)

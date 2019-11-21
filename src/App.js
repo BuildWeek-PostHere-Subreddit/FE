@@ -19,6 +19,9 @@ function App() {
         <Header />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <PrivateRoute path="/results">
+          <ResultCard />
+        </PrivateRoute>
         <PrivateRoute exact path="/">
           <Dashboard />
         </PrivateRoute>
