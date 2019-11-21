@@ -10,6 +10,7 @@ import Header from './components/Header'
 import SuggestedList from './components/SuggestedList'
 import ResultCard from './components/ResultCard'
 import NavBar from './components/NavBar';
+import SavedList from './components/SavedList';
 
 function App() {
   return (
@@ -19,11 +20,17 @@ function App() {
         <Header />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <PrivateRoute path="/results">
+          <ResultCard />
+        </PrivateRoute>
         <PrivateRoute exact path="/">
           <Dashboard />
         </PrivateRoute>
-    </div>
-      </Router>
+        <PrivateRoute exact path="/saved">
+          <SavedList />
+        </PrivateRoute>
+      </div>
+    </Router>
 
   );
 }

@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PostContent from './PostContent'
 import ResultCard from './ResultCard';
-import { submitPost, postSend } from '../actions/postFormActions';
+import { submitPost, saveResults } from '../actions/postFormActions';
 
 const useStyles = makeStyles(theme => ({
     text: {
@@ -40,60 +40,42 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const PostForm = ({ status, values }, props) => {
+const PostForm = (props) => {
 
-    
-    console.log("this is the results", props);
-    const [post, setPost] = useState([]);
+    console.log("this is the results", props.results);
+    const [post, setPost] = useState({ title: "", text: "", link: false });
     const classes = useStyles();
 
+    const handleChange = event => {
+        setPost({ ...post, [event.target.name]: event.target.value })
+    };
 
-    useEffect(() =>{
-        if (status) {
-            setPost([...post, status])
-        }
-    }, [status]);
+    const handleSubmit = event => {
+        event.preventDefault();
+        // postAxios(post);
+        props.submitPost(post)
+        console.log("post", post)
+        console.log("redux state", props.postFormSubmission)
+    }
 
     return (
         <div className="postForm">
             <Card className={classes.card}>
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/250px-Reddit_logo_new.svg.png"></img>
                 <h2 className={classes.h2}>Get Started Finding Those Subreddits!</h2>
-                <Form>
-                    <Field className={classes.title} type="title" name="title" placeholder="Title" />
+                <form onSubmit={handleSubmit}>
+                    <input className={classes.title} type="title" name="title" placeholder="Title" onChange={handleChange} />
                     <br /><br />
-                    <Field className={classes.text} as="textarea" type="text" name="text" placeholder="Enter Your Post Here!" />
+                    <input className={classes.text} as="textarea" type="text" name="text" placeholder="Enter Your Post Here!" onChange={handleChange} />
                     <br /><br />
                     <Button className={classes.button} size="large" type="submit">Get Subreddits!</Button>
-                </Form>
+                </form>
             </Card>
-            {/* {props.results.map(post => (
-                <PostContent 
-                title = {post.title}
-                text= {post.text}
-            />
-            ))} */}
+            <ResultCard post={post} />
         </div>
 
     )
 }
-const FormikPostForm = withFormik({
-    mapPropsToValues({ title, text, link }) {
-        return {
-            title: title || "",
-            text: text || "",
-            link: link || false,
-        };
-    },
-
-    handleSubmit(values, {setStatus, props}){
-        props.submitPost(values)
-        // props.dispatch(postSend(values));
-    }
-}
-)(PostForm)
-
-// export default FormikPostForm;
 
 const mapStateToProps = state => {
     console.log("in post form", state)
@@ -105,5 +87,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {submitPost}
-)(FormikPostForm);
+    { submitPost, saveResults }
+)(PostForm);
