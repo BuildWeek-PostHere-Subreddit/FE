@@ -36,9 +36,16 @@ export const submitPost = (data) => dispatch => {
 }
 
 export const saveResults = (data) => dispatch => {
+    console.log("reaching this", data)
     axios
+        .create({
+            headers: {
+                authorization: localStorage.getItem("token")
+            }
+        })
         .post("https://backend-posthere-russ-and-mack.herokuapp.com/post/new", data)
         .then(response => {
             console.log("saveResults", response)
         })
+        .catch(err => console.log(err))
 }
