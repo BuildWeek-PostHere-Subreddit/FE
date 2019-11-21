@@ -1,7 +1,7 @@
 import { ID_FETCH, ID_SUCCESS, ID_FAILURE } from '../actions/loginActions';
 
 const initialState = {
-    idUser: "",
+    idUser: undefined,
     isLogging: false,
     isLoggedIn: false,
     error: ""
