@@ -22,6 +22,7 @@ export const setUserID = (credentials, props) => dispatch => {
       console.log(res.data.id)
       dispatch({ type: ID_SUCCESS, payload: res.data.id })
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('user_id', res.data.id)
       // redirect to the apps main page?
     })
     .then(() => props.history.push('/'))
