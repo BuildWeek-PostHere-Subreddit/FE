@@ -15,6 +15,7 @@ function NavBar(props) {
         return (
             <div className="nav">
                 <Link to="/">Home</Link>
+                <Link to="/saved">Saved Results</Link>
                 <Link onClick={() => { console.log("Deleting token and logging out"); localStorage.removeItem("token"); props.history.push("/login"); }}>Log Out</Link>
             </div>
         );
