@@ -4,10 +4,44 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import PostContent from "./PostContent"
 import SuggestedList from "./SuggestedList"
+import { makeStyles } from '@material-ui/core/styles';
 import { saveResults } from '../actions/postFormActions';
 
-export function ResultCard(props) {
+const useStyles = makeStyles(theme => ({
+    text: {
+        fontSize: 20,
+        marginRight: 100,
+    },
+    passwordtext: {
+        fontSize: 20,
+        marginRight: 100,
+    },
+    button: {
+        fontSize: 25,
+        background: 'linear-gradient(45deg, #2E3B55 30%, #2E3B55 90%)',
+        color: '#FFFFFF'
+    },
+    card: {
+        maxWidth: 500,
+        background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
+        borderRadius: 0,
+        maxHeight: 900
+    },
+    h1: {
+        fontFamily: 'Ralewayy',
+    },
+    results:{
+        background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
+        
+    }
 
+}));
+
+
+
+
+export function ResultCard(props) {
+    const classes = useStyles();
     props.results.length = 3;
 
     const backendSubmit = event => {
@@ -19,25 +53,24 @@ export function ResultCard(props) {
     }
 
     return (
-        <div>
+        <Card className={classes.card} flexDirection="row">
             <button onClick={backendSubmit}>Save</button>
-            <p>{props.post.title}</p>
-            <br /><br />
-            <p>{props.post.text}</p>
+            <h1 className={classes.titletext}>Title:{props.post.title}</h1>
+            <p>Text: {props.post.text}</p>
             <br /><br />
             {props.results.map(result => {
                 return (
-                    <div>
-                        <div>
-                            <p>r/{result.name}</p>
-                            <p><a href={result.url} target="_blank">{result.url}</a></p>
-                            <p>Subscribers: {result.subscribers}</p>
-                            <p>{result.description}</p>
-                        </div>
-                    </div>
+                    
+                        <Card className={classes.results}>
+                            <h1>{result.name}</h1>
+                            <h3><a href={result.url} target="_blank">{result.url}</a></h3>
+                            <h3>Subscribers: {result.subscribers}</h3>
+                            <h3>{result.description}</h3>
+                        </Card>
                 )
             })}
-        </div>
+            
+        </Card>
     )
 }
 
