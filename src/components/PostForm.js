@@ -19,7 +19,9 @@ const useStyles = makeStyles(theme => ({
         marginRight: 105,
     },
     button: {
-        fontSize: 30,
+            fontSize: 30,
+            background: 'linear-gradient(45deg, #2E3B55 30%, #2E3B55 90%)',
+            color: '#FFFFFF'
     },
     card: {
         maxWidth: 500,
