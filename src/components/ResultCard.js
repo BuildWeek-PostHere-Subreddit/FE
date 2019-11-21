@@ -12,15 +12,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: 20,
         marginRight: 100,
     },
-    passwordtext: {
-        fontSize: 20,
-        marginRight: 100,
-    },
-    button: {
-        fontSize: 25,
-        background: 'linear-gradient(45deg, #2E3B55 30%, #2E3B55 90%)',
-        color: '#FFFFFF'
-    },
+
     card: {
         maxWidth: 500,
         background: 'linear-gradient(40deg, #FFCA00 30%, #FF4500 90%)',
@@ -62,8 +54,8 @@ export function ResultCard(props) {
                 return (
                     
                         <Card className={classes.results}>
-                            <h1>{result.name}</h1>
-                            <h3><a href={result.url} target="_blank">{result.url}</a></h3>
+                            <h1><a href={result.url} target="_blank">{result.name}</a></h1>
+                            <h3>{result.url}</h3>
                             <h3>Subscribers: {result.subscribers}</h3>
                             <h3>{result.description}</h3>
                         </Card>
