@@ -67,6 +67,11 @@ export const SavedList = props => {
     //     }
     // }
 
+    const deleteItem = item => {
+        console.log(item.id);
+        // axios
+        //     .delete(`https://backend-posthere-russ-and-mack.herokuapp.com/post/${item.id}`)
+    };
 
     return (
         <div>
@@ -78,6 +83,11 @@ export const SavedList = props => {
             {list.map(item => {
                 return (
                     <div>
+                        <button onClick={e => {
+                            // e.stopPropagation();
+                            deleteItem(item);
+                        }
+                        }>Delete</button>
                         <div>{item.title}</div>
                         <div>{item.content}</div>
                     </div>
