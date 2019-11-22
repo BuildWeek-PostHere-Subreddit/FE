@@ -69,8 +69,9 @@ export const SavedList = props => {
 
     const deleteItem = item => {
         console.log(item.id);
-        // axios
-        //     .delete(`https://backend-posthere-russ-and-mack.herokuapp.com/post/${item.id}`)
+        console.log(`https://backend-posthere-russ-and-mack.herokuapp.com/post/${localStorage.getItem("user_id")}/${item.id}`)
+        axios
+            .delete(`https://backend-posthere-russ-and-mack.herokuapp.com/post/${localStorage.getItem("user_id")}/${item.id}`)
     };
 
     return (
